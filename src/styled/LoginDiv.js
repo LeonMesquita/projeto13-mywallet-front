@@ -5,13 +5,15 @@ import styled from 'styled-components';
  
 
  @import url('https://fonts.googleapis.com/css2?family=Playball&family=Saira+Stencil+One&display=swap');
-    width: 768px;
+ 
+    width: 100%;
     min-height: 100vh;
-    margin: auto;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
+
+    align-self: center;
 
 
     h1{
@@ -24,9 +26,7 @@ import styled from 'styled-components';
     }
 
 
-    @media(max-width: 767px) {
-        width: 100%;
-    }
+
 `
 export default LoginDiv;
 

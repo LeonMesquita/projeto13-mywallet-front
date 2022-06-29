@@ -14,6 +14,7 @@ width: 326px;
 height: 50px;
 border: none;
 width: 100%;
+margin-bottom: 36px;
 cursor: pointer;
 
 
