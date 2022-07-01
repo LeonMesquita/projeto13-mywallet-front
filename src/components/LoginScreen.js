@@ -16,7 +16,7 @@ export default function LoginScreen(){
         console.log(`${apiUrl}/login`);
 
         try{
-            const promise = await axios.post(`${apiUrl}login`, {
+            const promise = await axios.post(`${apiUrl}/login`, {
                 email,
                 password
             });
@@ -37,7 +37,7 @@ export default function LoginScreen(){
                 <input placeholder='Senha' type="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
                 <FormButton buttonText="Entrar"/>
             </Form>
-            <Link to="/signin">
+            <Link to="/sign-in">
                 Primeira vez? Cadastre-se!
             </Link>
 

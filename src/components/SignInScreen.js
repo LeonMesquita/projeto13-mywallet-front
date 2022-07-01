@@ -11,18 +11,20 @@ export default function SignInScreen(){
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [name, setName] = useState('');
-    const {token, setToken} = useContext(Context);
+    const {token, setToken, apiUrl} = useContext(Context);
+    const navigate = useNavigate();
 
    async function submitLogin(event){
         event.preventDefault();
         try{
-            const promise = await axios.post('http://localhost:5000/sign-in',
+            const promise = await axios.post(`${apiUrl}/sign-in`,
             {
                 name,
                 email,
                 password
             });
-            setToken(promise.data);              
+            setToken(promise.data);   
+            navigate('/initial-screen');           
         }
         catch{
             console.log('error')
