@@ -1,16 +1,33 @@
 import Form from '../styled/Form';
 import LoginDiv from '../styled/LoginDiv';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import Context from '../Context';
 import FormButton from './FormButton';
 import { Link, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 export default function LoginScreen(){
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
+    const {token, setToken, apiUrl} = useContext(Context);
 
-    function submitLogin(event){
+    async function submitLogin(event){
         event.preventDefault();
-        console.log(email)
+        console.log(`${apiUrl}/login`);
+
+        try{
+            const promise = await axios.post(`${apiUrl}login`, {
+                email,
+                password
+            });
+            setToken(promise.data);
+            console.log(promise.data)
+            navigate('/initial-screen');
+        }
+        catch(error){
+            console.log(error);
+        }
+        
     }
     return(
         <LoginDiv>

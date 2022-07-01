@@ -2,8 +2,8 @@ import styled from 'styled-components';
 
 const Form = styled.form`
     width: 90%;
-
     margin-top: 24px;
+    
     input{
         background: #FFFFFF;
         border-radius: 5px;
