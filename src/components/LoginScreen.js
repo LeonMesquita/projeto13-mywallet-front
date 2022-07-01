@@ -1,4 +1,4 @@
-import Form from '../styled/Form';
+//import Form from '../styled/Form';
 import LoginDiv from '../styled/LoginDiv';
 import { useState, useContext } from 'react';
 import Context from '../Context';
@@ -32,11 +32,11 @@ export default function LoginScreen(){
     return(
         <LoginDiv>
             <h1>MyWallet</h1>
-            <Form onSubmit={submitLogin}>
+            <form onSubmit={submitLogin}>
                 <input placeholder='E-mail' type="email" value={email} onChange={(e) => setEmail(e.target.value)}/>
                 <input placeholder='Senha' type="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
                 <FormButton buttonText="Entrar"/>
-            </Form>
+            </form>
             <Link to="/sign-in">
                 Primeira vez? Cadastre-se!
             </Link>

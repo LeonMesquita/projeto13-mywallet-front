@@ -23,6 +23,7 @@ import styled from 'styled-components';
         font-size: 32px;
         line-height: 50px;
         color: white;
+        margin-bottom: 24px;
     }
 
 
