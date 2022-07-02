@@ -1,4 +1,3 @@
-
 import styled from 'styled-components';
 export default function NavBar(props){
     return(

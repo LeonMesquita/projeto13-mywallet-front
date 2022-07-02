@@ -6,16 +6,23 @@ import styled from 'styled-components';
 import AddButton from '../AddButton';
 import { IoIosLogOut, IoIosAddCircleOutline, IoIosRemoveCircleOutline } from "react-icons/io";
 import NavBar from '../NavBar';
-
+import Register from '../Register';
+import RegisterFooter from '../RegisterFooter';
 
 export default function InitialScreen(){
     const navigate = useNavigate();
-    const {token, setToken, apiUrl} = useContext(Context);
-    const [registers, setRegisters] = useState(0);
+    const {token, setToken, apiUrl, authorization} = useContext(Context);
+    const [registers, setRegisters] = useState([]);
 
     useEffect(async () => {
-      //  const promise = await axios.get(`${apiUrl}/user`);
-       // console.log(promise.data);
+       try{
+        const promise = await axios.get(`${apiUrl}/get-registers`, authorization);
+        setRegisters(promise.data);
+
+
+       }catch(error){
+
+       }
 
 
     }, []);
@@ -25,11 +32,15 @@ export default function InitialScreen(){
         <button><IoIosLogOut /></button>
     </NavBar>
         <RegisterArea>
-            {registers === 0 ? 
+            {registers.length === 0 ? 
             <h2>Não há registros de entrada ou saída</h2>
             
-             : <></>}
+             : <RegistersDiv>
+                {registers.map((register) => <Register date={register.date} description={register.description} value={register.value}/>)}
 
+                
+                </RegistersDiv>}
+<RegisterFooter />
         </RegisterArea>
         <AddRegisterArea>
             <AddButton onPress={() => navigate('/add-register', {state:{registerType: 'entry'}})} buttonIcon={<IoIosAddCircleOutline />} buttonText="Nova entrada"/>
@@ -50,6 +61,7 @@ const RegisterArea = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    position: relative;
 
     h2{
         text-align: center;
@@ -77,3 +89,22 @@ const AddRegisterArea = styled.div`
 const Sizedbox = styled.div`
     width: 30px;
 `
+
+const RegistersDiv = styled.div`
+    height: 100%;
+    width: 100%;
+    border-radius: 5px;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    overflow-x: scroll;
+    
+    
+    
+   
+`
+
+//    position: absolute;
+//bottom: 0;
+
+//

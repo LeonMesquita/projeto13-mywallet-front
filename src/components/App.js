@@ -8,12 +8,18 @@ import {useState} from 'react';
 import AddRegisterScreen from "./screens/AddRegisterScreen";
 
 export default function App(){
-    const [token, setToken] = useState('teste');
+    const [token, setToken] = useState('');
     const apiUrl = "http://localhost:5000";
+
+    const authorization = {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    }
     
     return(
         <div className="main-container">
-         <Context.Provider value={{token, setToken, apiUrl}}>
+         <Context.Provider value={{token, setToken, apiUrl, authorization}}>
             <BrowserRouter>
             <Routes>
                 <Route path="/" element={<LoginScreen />}/>
