@@ -1,8 +1,8 @@
 //import Form from '../styled/Form';
-import LoginDiv from '../styled/LoginDiv';
+import LoginDiv from '../../styled/LoginDiv';
 import { useState, useContext } from 'react';
-import Context from '../Context';
-import FormButton from './FormButton';
+import Context from '../../Context';
+import FormButton from '../FormButton';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 export default function LoginScreen(){

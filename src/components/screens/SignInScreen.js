@@ -1,9 +1,9 @@
-import LoginDiv from '../styled/LoginDiv';
+import LoginDiv from '../../styled/LoginDiv';
 import { useState, useContext } from 'react';
-import FormButton from './FormButton';
+import FormButton from '../FormButton';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import Context from '../Context';
+import Context from '../../Context';
 
 export default function SignInScreen(){
     const [email, setEmail] = useState('');

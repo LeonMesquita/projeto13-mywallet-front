@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
-export default function AddButton({buttonIcon, buttonText}){
+export default function AddButton({buttonIcon, buttonText, onPress}){
     return(
-    <Button>
+    <Button onClick={onPress}>
         <span>{buttonIcon}</span>
         <h4>{buttonText}</h4>
     
