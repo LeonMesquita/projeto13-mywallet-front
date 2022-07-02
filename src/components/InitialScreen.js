@@ -50,10 +50,18 @@ const NavBar = styled.div`
         display: flex;
         border: none;
         color: white;
-        size: 50px;
         font-size: 40px;
         background: transparent;
         cursor: pointer;
+        transition: font-size 0.3s;
+        
+
+
+        &:hover{ 
+        font-weight: 900;
+        color: #c2c2d6;
+        font-size: 50px;
+        }
     }
 
     p{
@@ -65,6 +73,7 @@ const NavBar = styled.div`
         line-height: 31px;
         color: #FFFFFF;
     }
+
 
 
 

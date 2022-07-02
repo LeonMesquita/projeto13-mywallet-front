@@ -16,6 +16,8 @@ border: none;
 width: 100%;
 margin-bottom: 36px;
 cursor: pointer;
+transition: background-color 0.5s;
+
 
 
 font-family: 'Raleway';
@@ -25,4 +27,9 @@ font-size: 20px;
 line-height: 23px;
 
 color: #FFFFFF;
+
+&:hover{
+        background-color:rgba(0,0,200,0.1);
+        font-weight: 900;
+    }
 `

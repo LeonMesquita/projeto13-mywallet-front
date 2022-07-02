@@ -5,7 +5,7 @@ body{
 }
 
 .main-container{
-    width: 768px;
+    width: 600px;
     min-height: 100vh;
     margin: auto;
     display: flex;
@@ -23,7 +23,14 @@ a{
     font-weight: 900;
     font-size: 15px;
     line-height: 18px;
+    transition: color 0.3s;
 
+
+}
+
+a:hover{
+    color:rgb(16, 86, 192);
+    text-decoration: underline;
 }
 
 
@@ -44,8 +51,22 @@ input{
     border: none;
     
 }
+input:focus {
+    outline: none;
+    border: none;
+ }
+::placeholder {
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px; 
+    color: #000000;
+    opacity: 1;
 
-@media(max-width: 767px) {
+
+  }
+
+@media(max-width: 600px) {
     .main-container{
         width: 100%;
     }

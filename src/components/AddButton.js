@@ -20,6 +20,7 @@ const Button = styled.button`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    transition: background-color 0.5s;
 
     span{
         color: white;
@@ -41,5 +42,9 @@ const Button = styled.button`
         width: 64px;
         margin-left: 10px;
         margin-bottom: 10px;
+    }
+
+    &:hover{
+        background-color:rgba(0,0,200,0.1);
     }
 `
