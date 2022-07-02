@@ -19,7 +19,7 @@ export default function InitialScreen(){
 
     useEffect(async () => {
        try{
-        const promise = await axios.get(`${apiUrl}/get-registers`, authorization);
+        const promise = await axios.get(`${apiUrl}get-registers`, authorization);
         setRegisters(promise.data.registers);
         setUserName(promise.data.userName);
         calcTotalMoney(promise.data.registers);
@@ -37,19 +37,25 @@ export default function InitialScreen(){
         });
         setTotalMoney(sum);
     }
+
+    function deleteRegister(){
+        console.log('test');
+    }
     return <>
     <NavBar>
         <p>Olá, {userName}</p>
         <button><IoIosLogOut /></button>
     </NavBar>
-        <RegisterArea>
+        <RegisterArea >
             {registers.length === 0 ? 
             <h2>Não há registros de entrada ou saída</h2>
             
              : <RegistersDiv>
                 {registers.map((register) => 
                     <Register date={register.date} description={register.description}
-                    value={register.value} textColor= {register.registerType === "entry" ? "#03AC00" : "#C70000"}/>)}
+                    value={register.value} textColor= {register.registerType === "entry" ? "#03AC00" : "#C70000"}
+                    onPress={deleteRegister}
+                    />)}
                 </RegistersDiv>}
             <RegisterFooter value={totalMoney} textColor={totalMoney >= 0 ? "#03AC00" : "#C70000"}/>
         </RegisterArea>
@@ -104,11 +110,11 @@ const Sizedbox = styled.div`
 const RegistersDiv = styled.div`
     height: 100%;
     width: 100%;
-    border-radius: 5px;
     margin-top: 10px;
     display: flex;
     flex-direction: column;
     overflow-x: scroll;
+
     
     
     

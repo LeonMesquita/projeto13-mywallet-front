@@ -16,7 +16,7 @@ export default function LoginScreen(){
         console.log(`${apiUrl}/login`);
 
         try{
-            const promise = await axios.post(`${apiUrl}/login`, {
+            const promise = await axios.post(`${apiUrl}login`, {
                 email,
                 password
             });

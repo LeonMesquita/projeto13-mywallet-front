@@ -16,7 +16,7 @@ export default function SignInScreen(){
    async function submitLogin(event){
         event.preventDefault();
         try{
-            const promise = await axios.post(`${apiUrl}/sign-in`,
+            const promise = await axios.post(`${apiUrl}sign-in`,
             {
                 name,
                 email,
