@@ -21,7 +21,6 @@ export default function LoginScreen(){
                 password
             });
             setToken(promise.data);
-            console.log(promise.data)
             navigate('/initial-screen');
         }
         catch(error){
@@ -29,6 +28,8 @@ export default function LoginScreen(){
         }
         
     }
+
+
     return(
         <LoginDiv>
             <h1>MyWallet</h1>

@@ -1,12 +1,11 @@
 import styled from 'styled-components';
-export default function Register({date, description, value}){
+export default function Register({date, description, value, textColor}){
     return(
-        <RegisterDiv>
+        <RegisterDiv textColor={textColor}>
             <div>
                 <p>{date}</p>
                 <h3>{description}</h3>                
             </div>
-
             <h4>{value}</h4>
         </RegisterDiv>
     )
@@ -40,7 +39,7 @@ const RegisterDiv = styled.div`
 
     h4{
         font-style: normal;
-        color: #C70000;
+        color: ${props => props.textColor};
         text-align: center;
         }
     

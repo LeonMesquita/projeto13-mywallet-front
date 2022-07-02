@@ -9,7 +9,6 @@ import Context from '../../Context';
 export default function AddRegisterScreen(){
     const navigate = useNavigate();
     const {token, setToken, apiUrl, authorization} = useContext(Context);
-    console.log(authorization);
     const location = useLocation();
     const registerType = location.state.registerType;
     const [value, setValue] = useState('');

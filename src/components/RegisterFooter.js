@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-export default function RegisterFooter({value}){
+export default function RegisterFooter({value, textColor}){
     return(
-        <Footer>
+        <Footer textColor={textColor}>
             <h3>Saldo</h3>
             <h4>{value}</h4>
         </Footer>
@@ -23,7 +23,7 @@ const Footer = styled.div`
         margin-left: 15px;
         font-style: normal;
         font-weight: 700;
-        font-size: 17px;
+        font-size: 20px;
         color: #000000;
     }
 
@@ -32,10 +32,9 @@ const Footer = styled.div`
         margin-right: 15px;
         font-style: normal;
         font-weight: 400;
-        font-size: 17px;
-        line-height: 20px;
+        font-size: 20px;
         text-align: right;
-        color: #03AC00;
+        color: ${props => props.textColor};
     }
 
 `

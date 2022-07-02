@@ -12,23 +12,34 @@ import RegisterFooter from '../RegisterFooter';
 export default function InitialScreen(){
     const navigate = useNavigate();
     const {token, setToken, apiUrl, authorization} = useContext(Context);
+    const [userName, setUserName] = useState([]);
+    const [totalMoney, setTotalMoney] = useState(0);
     const [registers, setRegisters] = useState([]);
+
 
     useEffect(async () => {
        try{
         const promise = await axios.get(`${apiUrl}/get-registers`, authorization);
-        setRegisters(promise.data);
-
-
+        setRegisters(promise.data.registers);
+        setUserName(promise.data.userName);
+        calcTotalMoney(promise.data.registers);
        }catch(error){
 
        }
-
-
     }, []);
+
+    function calcTotalMoney(registers){
+        let sum = 0;
+        registers.map((register) => {
+            let value =  Number(register.value);
+            if(register.registerType === 'out') value *= -1;
+            sum += value
+        });
+        setTotalMoney(sum);
+    }
     return <>
     <NavBar>
-        <p>Olá, Fulano</p>
+        <p>Olá, {userName}</p>
         <button><IoIosLogOut /></button>
     </NavBar>
         <RegisterArea>
@@ -36,11 +47,11 @@ export default function InitialScreen(){
             <h2>Não há registros de entrada ou saída</h2>
             
              : <RegistersDiv>
-                {registers.map((register) => <Register date={register.date} description={register.description} value={register.value}/>)}
-
-                
+                {registers.map((register) => 
+                    <Register date={register.date} description={register.description}
+                    value={register.value} textColor= {register.registerType === "entry" ? "#03AC00" : "#C70000"}/>)}
                 </RegistersDiv>}
-<RegisterFooter />
+            <RegisterFooter value={totalMoney} textColor={totalMoney >= 0 ? "#03AC00" : "#C70000"}/>
         </RegisterArea>
         <AddRegisterArea>
             <AddButton onPress={() => navigate('/add-register', {state:{registerType: 'entry'}})} buttonIcon={<IoIosAddCircleOutline />} buttonText="Nova entrada"/>
