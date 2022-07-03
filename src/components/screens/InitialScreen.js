@@ -64,8 +64,8 @@ export default function InitialScreen(){
             <h2>Não há registros de entrada ou saída</h2>
             
              : <RegistersDiv>
-                {registers.map((register) => 
-                    <Register date={register.date} description={register.description}
+                {registers.map((register, index) => 
+                    <Register key={index} date={register.date} description={register.description}
                     value={register.value} textColor= {register.registerType === "entry" ? "#03AC00" : "#C70000"}
                     onPress={() => deleteRegister(register._id)}
                     />)}

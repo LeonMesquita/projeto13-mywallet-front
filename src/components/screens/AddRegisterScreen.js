@@ -18,7 +18,7 @@ export default function AddRegisterScreen(){
 
         try{
             const promise = axios.post(`${apiUrl}add-register`, {
-                value,
+                value: Number(value),
                 description,
                 registerType
             },

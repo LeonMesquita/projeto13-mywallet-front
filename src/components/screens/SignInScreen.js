@@ -40,7 +40,7 @@ export default function SignInScreen(){
                 <input placeholder='E-mail' type="email" value={email} onChange={(e) => setEmail(e.target.value)}/>
                 <input placeholder='Senha' type="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
                 <input placeholder='Confirme a senha' type="password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)}/>
-                <FormButton buttonText="Entrar"/>
+                <FormButton buttonText="Cadastrar"/>
             </form>
             <Link to="/">
                 Já tem uma conta? Entre agora!

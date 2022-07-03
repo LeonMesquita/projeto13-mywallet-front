@@ -1,4 +1,3 @@
-//import Form from '../styled/Form';
 import LoginDiv from '../../styled/LoginDiv';
 import { useState, useContext } from 'react';
 import Context from '../../Context';
@@ -13,7 +12,7 @@ export default function LoginScreen(){
 
     async function submitLogin(event){
         event.preventDefault();
-        console.log(`${apiUrl}/login`);
+        console.log(`${apiUrl}login`);
 
         try{
             const promise = await axios.post(`${apiUrl}login`, {
