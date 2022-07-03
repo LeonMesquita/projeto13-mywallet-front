@@ -28,6 +28,7 @@ export default function AddRegisterScreen(){
 
 
         }catch(error){
+            navigate('/');
 
         }
     }

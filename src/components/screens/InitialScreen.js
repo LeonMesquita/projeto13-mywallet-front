@@ -11,11 +11,13 @@ import RegisterFooter from '../RegisterFooter';
 
 export default function InitialScreen(){
     const navigate = useNavigate();
-    const {apiUrl, authorization} = useContext(Context);
+    const {apiUrl, authorization,token, setToken} = useContext(Context);
     const [userName, setUserName] = useState("");
 
     const [totalMoney, setTotalMoney] = useState(0);
     const [registers, setRegisters] = useState([]);
+
+   // if(token === "") navigate('/');
 
     async function getRegisters(){
         try{
@@ -25,7 +27,7 @@ export default function InitialScreen(){
             calcTotalMoney(promise.data.registers);
             console.log(promise.data.registers);
            }catch(error){
-    
+            navigate('/');
            }
     }
 
@@ -55,10 +57,16 @@ export default function InitialScreen(){
             console.log(error);
         }
     }
-    return <>
+
+    async function logoutUser(){
+        const promise = await axios.post(`${apiUrl}logout`, {}, authorization);
+        setToken('');    
+        navigate('/');
+    }
+    return(<>
     <NavBar>
         <p>Olá, {userName}</p>
-        <button><IoIosLogOut /></button>
+        <button onClick={logoutUser}><IoIosLogOut /></button>
     </NavBar>
         <RegisterArea >
             {registers.length === 0 ? 
@@ -79,6 +87,7 @@ export default function InitialScreen(){
             <AddButton onPress={() => navigate('/add-register', {state:{registerType: 'out'}})} buttonIcon={<IoIosRemoveCircleOutline />} buttonText="Nova saída"/>
         </AddRegisterArea>
     </>
+    );
 }
 
 

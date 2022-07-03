@@ -8,7 +8,7 @@ import {useState} from 'react';
 import AddRegisterScreen from "./screens/AddRegisterScreen";
 
 export default function App(){
-    const [token, setToken] = useState();
+    const [token, setToken] = useState('');
     //const apiUrl = "http://localhost:5000/";
     const apiUrl = "https://mywallet-back-leonardo.herokuapp.com/";
     

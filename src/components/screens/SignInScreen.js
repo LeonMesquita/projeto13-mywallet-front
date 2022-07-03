@@ -12,24 +12,33 @@ export default function SignInScreen(){
     const [name, setName] = useState('');
     const {token, setToken, apiUrl} = useContext(Context);
     const navigate = useNavigate();
+    const [placeholder, setPlaceholder] = useState('Confirme a senha');
 
    async function submitLogin(event){
         event.preventDefault();
-        try{
-            const promise = await axios.post(`${apiUrl}sign-in`,
-            {
-                name,
-                email,
-                password
-            });
-            setToken(promise.data);
-           
-            navigate('/');           
+        if(password === confirmPassword){
+            try{
+                const promise = await axios.post(`${apiUrl}sign-in`,
+                {
+                    name,
+                    email,
+                    password
+                });
+                setToken(promise.data);
+            
+                navigate('/');           
+            }
+            catch{
+                console.log('error');
+
+            }            
         }
-        catch{
-            console.log('error')
+        else{
+            setConfirmPassword('');
+            setPlaceholder("Senha inválida!");
 
         }
+
  
 
     }
@@ -40,7 +49,7 @@ export default function SignInScreen(){
                 <input placeholder='Nome' type="text" value={name} onChange={(e) => setName(e.target.value)}/>
                 <input placeholder='E-mail' type="email" value={email} onChange={(e) => setEmail(e.target.value)}/>
                 <input placeholder='Senha' type="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
-                <input placeholder='Confirme a senha' type="password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)}/>
+                <input placeholder={placeholder} type="password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)}/>
                 <FormButton buttonText="Cadastrar"/>
             </form>
             <Link to="/">
