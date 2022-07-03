@@ -22,8 +22,9 @@ export default function SignInScreen(){
                 email,
                 password
             });
-            setToken(promise.data);   
-            navigate('/initial-screen');           
+            setToken(promise.data);
+           
+            navigate('/');           
         }
         catch{
             console.log('error')

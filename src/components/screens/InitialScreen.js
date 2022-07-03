@@ -1,6 +1,6 @@
 import { useState, useContext, useEffect } from 'react';
 import Context from '../../Context';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import styled from 'styled-components';
 import AddButton from '../AddButton';
@@ -11,8 +11,9 @@ import RegisterFooter from '../RegisterFooter';
 
 export default function InitialScreen(){
     const navigate = useNavigate();
-    const {token, setToken, apiUrl, authorization} = useContext(Context);
-    const [userName, setUserName] = useState([]);
+    const {apiUrl, authorization} = useContext(Context);
+    const [userName, setUserName] = useState("");
+
     const [totalMoney, setTotalMoney] = useState(0);
     const [registers, setRegisters] = useState([]);
 
