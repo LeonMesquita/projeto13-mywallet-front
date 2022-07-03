@@ -1,14 +1,14 @@
-import {useLocation, Link, useNavigate} from 'react-router-dom';
+import {useLocation, useNavigate} from 'react-router-dom';
 import NavBar from '../NavBar';
 import styled from 'styled-components';
 import FormButton from '../FormButton';
 import axios from 'axios';
-import { useState, useContext, useEffect } from 'react';
+import { useState, useContext } from 'react';
 import Context from '../../Context';
 
 export default function AddRegisterScreen(){
     const navigate = useNavigate();
-    const {token, setToken, apiUrl, authorization} = useContext(Context);
+    const {apiUrl, authorization} = useContext(Context);
     const location = useLocation();
     const registerType = location.state.registerType;
     const [value, setValue] = useState('');
@@ -18,7 +18,7 @@ export default function AddRegisterScreen(){
 
         try{
             const promise = axios.post(`${apiUrl}add-register`, {
-                value: Number(value),
+                value,
                 description,
                 registerType
             },
