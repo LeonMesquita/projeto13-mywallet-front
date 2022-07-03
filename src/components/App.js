@@ -9,8 +9,8 @@ import AddRegisterScreen from "./screens/AddRegisterScreen";
 
 export default function App(){
     const [token, setToken] = useState('f61aef35-25e9-4be2-a4a3-2394ad919d51');
-    const apiUrl = "http://localhost:5000/";
-    //const apiUrl = "https://mywallet-back-leo.herokuapp.com/";
+    //const apiUrl = "http://localhost:5000/";
+    const apiUrl = "https://mywallet-back-leo.herokuapp.com/";
     
 
     const authorization = {
