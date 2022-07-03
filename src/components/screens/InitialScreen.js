@@ -16,16 +16,21 @@ export default function InitialScreen(){
     const [totalMoney, setTotalMoney] = useState(0);
     const [registers, setRegisters] = useState([]);
 
+    async function getRegisters(){
+        try{
+            const promise = await axios.get(`${apiUrl}get-registers`, authorization);
+            setRegisters(promise.data.registers);
+            setUserName(promise.data.userName);
+            calcTotalMoney(promise.data.registers);
+            console.log(promise.data.registers);
+           }catch(error){
+    
+           }
+    }
 
-    useEffect(async () => {
-       try{
-        const promise = await axios.get(`${apiUrl}get-registers`, authorization);
-        setRegisters(promise.data.registers);
-        setUserName(promise.data.userName);
-        calcTotalMoney(promise.data.registers);
-       }catch(error){
 
-       }
+    useEffect(() => {
+        getRegisters();
     }, []);
 
     function calcTotalMoney(registers){
@@ -38,8 +43,16 @@ export default function InitialScreen(){
         setTotalMoney(sum);
     }
 
-    function deleteRegister(){
-        console.log('test');
+    async function deleteRegister(registerId){
+        console.log(registerId);
+        try{
+            const promise = await axios.post(`${apiUrl}delete-register`, {registerId}, authorization);
+            getRegisters();
+            console.log(promise.status);
+
+        }catch(error){
+            console.log(error);
+        }
     }
     return <>
     <NavBar>
@@ -54,7 +67,7 @@ export default function InitialScreen(){
                 {registers.map((register) => 
                     <Register date={register.date} description={register.description}
                     value={register.value} textColor= {register.registerType === "entry" ? "#03AC00" : "#C70000"}
-                    onPress={deleteRegister}
+                    onPress={() => deleteRegister(register._id)}
                     />)}
                 </RegistersDiv>}
             <RegisterFooter value={totalMoney} textColor={totalMoney >= 0 ? "#03AC00" : "#C70000"}/>
