@@ -10,7 +10,7 @@ import AddRegisterScreen from "./screens/AddRegisterScreen";
 export default function App(){
     const [token, setToken] = useState('');
     //const apiUrl = "http://localhost:5000/";
-    const apiUrl = "https://mywallet-backend-leonardo.herokuapp.com/";
+    const apiUrl = "https://mywallet-api-leonardo.herokuapp.com/";
     
 
     const authorization = {
