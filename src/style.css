@@ -49,8 +49,12 @@ input{
     height: 58px;
     margin-bottom: 13px;
     border: none;
+    line-height: 200% !important;
+    text-indent:15px;
     
 }
+
+
 input:focus {
     outline: none;
     border: none;

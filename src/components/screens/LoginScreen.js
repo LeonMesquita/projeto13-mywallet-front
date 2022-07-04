@@ -33,8 +33,8 @@ export default function LoginScreen(){
         <LoginDiv>
             <h1>MyWallet</h1>
             <form onSubmit={submitLogin}>
-                <input placeholder=' E-mail' type="email" value={email} onChange={(e) => setEmail(e.target.value)}/>
-                <input placeholder=' Senha' type="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
+                <input placeholder='E-mail' type="email" value={email} onChange={(e) => setEmail(e.target.value)}/>
+                <input placeholder='Senha' type="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
                 <FormButton buttonText="Entrar"/>
             </form>
             <Link to="/sign-in">

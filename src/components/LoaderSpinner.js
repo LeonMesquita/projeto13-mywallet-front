@@ -2,9 +2,9 @@ import {ThreeDots, Oval } from  'react-loader-spinner'
 import styled from 'styled-components';
 
 
-export default function LoaderSpinner({loaderType}){
+export default function LoaderSpinner(){
     return(
-        !loaderType ?
+ 
         <ThreeDots 
             height="50"
             width="50"
@@ -12,18 +12,6 @@ export default function LoaderSpinner({loaderType}){
             ariaLabel='loading'
             
         />
-        :
-        <Loader>
-        <Oval 
-        height="100"
-        width="100"
-        color='#00BFFF'
-        secondaryColor='grey'
-        ariaLabel='loading'
-        />
-        </Loader>
-    
-
     );
 }
 
