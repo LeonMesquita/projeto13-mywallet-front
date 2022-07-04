@@ -8,11 +8,14 @@ import { IoIosLogOut, IoIosAddCircleOutline, IoIosRemoveCircleOutline } from "re
 import NavBar from '../NavBar';
 import Register from '../Register';
 import RegisterFooter from '../RegisterFooter';
+import LoaderSpinner from '../LoaderSpinner';
+
 
 export default function InitialScreen(){
     const navigate = useNavigate();
     const {apiUrl, authorization,token, setToken} = useContext(Context);
     const [userName, setUserName] = useState("");
+    const [isLoading, setIsLoading] = useState(true);
 
     const [totalMoney, setTotalMoney] = useState(0);
     const [registers, setRegisters] = useState([]);
@@ -25,7 +28,7 @@ export default function InitialScreen(){
             setRegisters(promise.data.registers);
             setUserName(promise.data.userName);
             calcTotalMoney(promise.data.registers);
-            console.log(promise.data.registers);
+            setIsLoading(false);
            }catch(error){
             navigate('/');
            }
@@ -50,8 +53,9 @@ export default function InitialScreen(){
         console.log(registerId);
         try{
             const promise = await axios.post(`${apiUrl}delete-register`, {registerId}, authorization);
+            setIsLoading(true);
             getRegisters();
-            console.log(promise.status);
+            
 
         }catch(error){
             console.log(error);
@@ -63,7 +67,10 @@ export default function InitialScreen(){
         setToken('');    
         navigate('/');
     }
-    return(<>
+    return(
+        isLoading ? <LoaderSpinner />
+        :
+        <>
     <NavBar>
         <p>Olá, {userName}</p>
         <button onClick={logoutUser}><IoIosLogOut /></button>
